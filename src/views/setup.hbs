@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Input Fields</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .otp-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+            border: 2px solid #333;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px #4CAF50;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            top: 55%;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            position: absolute;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="otp-container">
+            <input type="text" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+            <input type="text" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+            <input type="text" maxlength="1" pattern="[0-9]*" inputmode="numeric">
+            <input type="text" maxlength="1" pattern="[0-9]*" inputmode="numeric"><br>
+        </div>
+        <input type="submit" onclick="verifyOT()" value="Submit OTP" class="button">
+            <p style="margin: 0; margin-top:5px "><a href="/forgot-password"  onclick="abs()" style="text-decoration: none;" >Go Back</a></p>
+
+    </div>
+
+    <script>
+        // Automatically focus on the next input field as the user types
+        const inputs = document.querySelectorAll('.otp-container input');
+        console.log(inputs)
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', () => {
+                if (input.value && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+
+            input.addEventListener('keydown', (event) => {
+                if (event.key === 'Backspace' && index > 0 && !input.value) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+        
+    </script>
+    <script src="./source/js/send.js" defer></script>
+
+</body>
+
+</html>

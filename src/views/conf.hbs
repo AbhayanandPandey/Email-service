@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Password</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f5;
+            background-color: #173b29;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: rgb(226, 207, 207);
+        }
+
+        .button {
+            width: 150px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+        /*@media (min-width:450px) {
+
+            input[type="text"] {
+                letter-spacing: 58px;
+            }
+        }
+        @media (max-width:450px) and (min-width:395px) {
+
+            input[type="text"] {
+                letter-spacing: 53px;
+            }
+        }
+        @media (max-width:395px) {
+
+            input[type="text"] {
+                letter-spacing: 42px;
+            }
+        }*/
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Enter OTP</h1>
+        <form action="conf" method="post">
+            <input type="text" name="conotp" id="clr" autocomplete="off" required>
+            <input type="submit" name="submit" class="button">
+            <p style="margin: 0; margin-top:5px "><a href="/forgot-password"  onclick="abs()" style="text-decoration: none;" >Go Back</a></p>
+        </form>
+    </div>
+<script src="./source/js/app.js" defer></script>
+<script>
+    if (performance.navigation.type === 1) { // 1 = Reload
+      console.log('Page refreshed');
+      // Send request to the server on page refresh
+      fetch('/refresh', {
+        method: 'POST',
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+</body>
+
+</html>
+
